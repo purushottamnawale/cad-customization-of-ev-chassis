@@ -29,7 +29,7 @@ WidthofOuterRectangleCS=float(input("Width of Outer Rectangle Cross Section"))
 # WidthofOuterRectangleCS=91
 B=WidthofOuterRectangleCS
 
-WidthofInnerRectangleCS=
+# WidthofInnerRectangleCS=
 WidthofInnerRectangleCS=80
 b=WidthofInnerRectangleCS
 
