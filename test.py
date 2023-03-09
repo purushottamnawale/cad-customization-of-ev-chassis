@@ -1,49 +1,31 @@
-# Given equation
-eqn = lambda B, b, H, h: (B*pow(H,3)/12) - (b*pow(h,3)/12)
+min_lhs = 6127552.083333333
+max_lhs = 7000000
+min_w = 60
+max_w = 200
+min_t = 4
+max_t = 10
 
-# Constants
-MIN_B = 50
-MAX_B = 150
-MIN_b = 45
-MAX_b = 140
-MIN_H = 80
-MAX_H = 200
-MIN_h = 75
-MAX_h = 190
-TARGET = 6127552.083333333
-MAX_ITERATIONS = 1000
+# Start with middle values
+w = (min_w + max_w) / 2
+t = (min_t + max_t) / 2
+lhs = ((w * pow(1.5*w, 3))/12) - (((w-2*t)*pow((1.5*w-2*t), 3))/12)
 
-# Starting values
-B = (MIN_B + MAX_B) // 2
-b = (MIN_b + MAX_b) // 2
-H = (MIN_H + MAX_H) // 2
-h = (MIN_h + MAX_h) // 2
-
-# Iterate through ranges, changing one variable at a time
-for i in range(MAX_ITERATIONS):
-    # Check if current values satisfy equation
-    result = eqn(B, b, H, h)
-    if result > TARGET and result < 10000000:
-        print(f"Found solution after {i+1} iterations:")
-        print(f"B = {B}, b = {b}, H = {H}, h = {h}")
-        break
-
-    # Change variables
-    if result < TARGET:
-        if B < MAX_B:
-            B += 1
-        elif b < MAX_b:
-            b += 1
-        elif H < MAX_H:
-            H += 1
-        elif h < MAX_h:
-            h += 1
+while lhs <= min_lhs or lhs >= max_lhs:
+    if lhs <= min_lhs:
+        # If lhs is too small, increase w and t
+        w += 1
+        t += 0.1
     else:
-        if B > MIN_B:
-            B -= 1
-        elif b > MIN_b:
-            b -= 1
-        elif H > MIN_H:
-            H -= 1
-        elif h > MIN_h:
-            h -= 1
+        # If lhs is too large, decrease w and t
+        w -= 1
+        t -= 0.1
+    lhs = ((w * pow(1.5*w, 3))/12) - (((w-2*t)*pow((1.5*w-2*t), 3))/12)
+
+print(f"w = {w:.2f}, t = {t:.2f}")
+H = round(1.5*w)
+h = round(H-2*t)
+W = round(w)
+w = round(W-2*t)
+
+
+print(W, H, w, h)
