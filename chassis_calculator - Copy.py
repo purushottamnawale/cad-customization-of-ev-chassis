@@ -7,7 +7,7 @@ Force = 13488.75
 
 # Bending_Stiffness is in N/mm (For chassis to be safe or avoid bending it should have bending stiffness more than 3 kn/mm)
 Bending_Stiffness = 4000
-wheelBase = float(input("Enter the wheelbase of vehicle in mm = "))
+wheelBase = float(input("Enter the wheelbase of vehicle in mm = ") or "2450")
 
 # Mpa Considering material High carbon steel, typical application for making chassis
 Modulus_of_Elasticity = 200000
@@ -58,7 +58,7 @@ print("Height of inner rectangle = ", h, "mm")
 # We have to consider torsional stiffness with value greater than 4 kN m/deg for vehical to sustain torsional load
 Torsional_Stiffness = 4500000  # N mm/deg
 print("For cross member dimensions")
-Front_Track = float(input("Enter the front track of vehicle in mm = "))
+Front_Track = float(input("Enter the front track of vehicle in mm = ") or "1520")
 Length = Front_Track/2
 
 # Torsional force acting on frame (force acting multiplied by perpendicular distance)
@@ -74,5 +74,3 @@ print("Dimensions of cross members")
 print("Width of cross member = ", Width_of_the_cross_member, "mm")
 print("Height of cross member = ", Height_of_the_cross_member, "mm")
 print("length of cross member = ", Front_Track, "mm")
-
-
