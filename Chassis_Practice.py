@@ -1,5 +1,6 @@
 # Author- Purushottam B. Nawale
 # Description- EV Chassis Design 1
+# This python can create a 3D model of EV Chassis
 
 import adsk.core
 import adsk.fusion
