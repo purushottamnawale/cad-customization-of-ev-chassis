@@ -10,7 +10,7 @@ Force_on_each_side_member = Force/2
 Bending_Stiffness = 4000
 wheelBase = float(input("Enter the wheelbase of vehicle in mm = ") or "2450")
 
-# Mpa Considering material High carbon steel, typical application for making chassis
+# MPa considering material low-carbon steel, which is a typical material for making the chassis.
 Modulus_of_Elasticity = 200000
 
 # Where 'a' is equal to moment of inertia considering Hollow rectangular section
@@ -78,4 +78,4 @@ print("Width of outer rectangle of cross member = ",Width_of_the_cross_member, "
 print("Width of inner rectangle of cross member = ",Width_of_the_cross_member-10, "mm")
 print("Height of outer cross member = ", Height_of_the_cross_member, "mm")
 print("Height of inner cross member = ", Height_of_the_cross_member-10, "mm")
-print("length of cross member = ", Front_Track, "mm")
+print("length of cross member = ", Front_Track-2*W, "mm")
