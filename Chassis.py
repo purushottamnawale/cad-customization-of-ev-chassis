@@ -215,6 +215,9 @@ def run(context):
         pointA = adsk.core.Point3D.create(-15, -4.3, 0)
         # pointB = adsk.core.Point3D.create(155, -4.3, 0)
         # Get the parameter as a ValueInput
+
+        #########################################################################################################################
+        #This width doesn't changes with the slider 
         Width2 = design.userParameters.itemByName(Width)
         
 
