@@ -215,10 +215,12 @@ def run(context):
         rectangle2 = rectangles2.addCenterPointRectangle(centerPoint, cornerPoint2)
 
         #################################################################################################################
-        Width = design.userParameters.itemByName(Width).value
+        Width = design.userParameters.itemByName(Width)
         pointA = adsk.core.Point3D.create(-15, -4.3, 0)
-        pointB = adsk.core.Point3D.create(realInputNumber, -4.3, 0) # width,realinputnumber1,2 works in point3d
+        pointB = adsk.core.Point3D.create(Width.value*2, -4.3, 0) # width,realinputnumber1,2 works in point3d
         # value1,2,realvalueinput,newinputnumber,newinputname doesn't work in point3d
+
+
 
 
         # pointB = adsk.core.Point3D.create(155, -4.3, 0)
@@ -228,8 +230,10 @@ def run(context):
         lineAB = lines1.addByTwoPoints(pointA, pointB)
         lineAD = lines1.addByTwoPoints(pointA, pointD)
         # lineBC = lines1.addByTwoPoints(pointB, pointC)
+
         # arc1 = sketch1.sketchCurves.sketchArcs.addFillet(lineAB, lineAB.endSketchPoint.geometry, lineBC, lineBC.startSketchPoint.geometry, 30)  # Last argument is the radius of arc
         # arc2 = sketch1.sketchCurves.sketchArcs.addFillet(lineAB, lineAB.endSketchPoint.geometry, lineAD, lineAD.startSketchPoint.geometry, 30)  # Last argument is the radius of arc
+
         prof = sketch2.profiles.item(0)
         # Added all lines to the Collection, So Sweep follows all those lines
         collection = adsk.core.ObjectCollection.create()
