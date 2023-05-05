@@ -14,22 +14,25 @@ def run(context):
         ui = app.userInterface
         doc = app.documents.add(adsk.core.DocumentTypes.FusionDesignDocumentType)
         design = adsk.fusion.Design.cast(app.activeProduct)
+        unitsMgr = design.unitsManager
         rootComp = design.rootComponent
         sketches = rootComp.sketches
         planes = rootComp.constructionPlanes
-        features=rootComp.features
+        features = rootComp.features
         sweeps = rootComp.features.sweepFeatures
         extrudes = rootComp.features.extrudeFeatures
 
         # User Parameters
         Width='Width'
-        widthValue='100 cm' #65.7
-        # newInputName=ui.inputBox("Enter a new User Parametere Name: ", "New User Parameter",Width)
-        # newInputNumber=ui.inputBox("Enter a User Parameter Value: ","New User Parameter",widthValue)
-        unitsMgr=design.unitsManager
-        realInputNumber=unitsMgr.evaluateExpression(widthValue,unitsMgr.defaultLengthUnits)
+        widthValue='65.7 cm'
+        newInputName=ui.inputBox("Enter a new User Parameter Name: ", "New User Parameter",Width)
+        newInputNumber=ui.inputBox("Enter a User Parameter Value: ","New User Parameter",widthValue)
+        # realInputNumber=unitsMgr.evaluateExpression(widthValue,unitsMgr.defaultLengthUnits)
+        realInputNumber=unitsMgr.evaluateExpression(newInputNumber[0],unitsMgr.defaultLengthUnits)
         realValueInput=adsk.core.ValueInput.createByReal(realInputNumber)
-        design.userParameters.add(Width,realValueInput,unitsMgr.defaultLengthUnits,'')
+        # value=design.userParameters.add(Width,realValueInput,unitsMgr.defaultLengthUnits,'')
+        value=design.userParameters.add(newInputName[0],realValueInput,unitsMgr.defaultLengthUnits,'')
+
 
         xyPlane = rootComp.xYConstructionPlane
         yzPlane = rootComp.yZConstructionPlane
@@ -94,11 +97,11 @@ def run(context):
         # Get a face of the body
         face1 = body1.faces.item(39)
 
-        
-        # # Create a Plane for a Mirror
+        #######################################################################################################################
+        # Create a Plane for a Mirror
         planeInput = planes.createInput()
-        # offsetDistance = adsk.core.ValueInput.createByString('65.7 cm') #131.4/2=65.7
-        offsetDistance = adsk.core.ValueInput.createByString(Width) #131.4/2=65.7
+        offsetDistance = adsk.core.ValueInput.createByString('65.7 cm') #131.4/2=65.7
+        offsetDistance = adsk.core.ValueInput.createByString(Width)
         planeInput.setByOffset(face1, offsetDistance)
         plane = planes.add(planeInput)
         plane.isLightBulbOn=False
@@ -211,39 +214,30 @@ def run(context):
         cornerPoint2 = adsk.core.Point3D.create(-6.45, 0, 0)
         rectangle2 = rectangles2.addCenterPointRectangle(centerPoint, cornerPoint2)
 
-
+        #################################################################################################################
+        Width = design.userParameters.itemByName(Width).value
         pointA = adsk.core.Point3D.create(-15, -4.3, 0)
+        pointB = adsk.core.Point3D.create(realInputNumber, -4.3, 0) # width,realinputnumber1,2 works in point3d
+        # value1,2,realvalueinput,newinputnumber,newinputname doesn't work in point3d
+
+
         # pointB = adsk.core.Point3D.create(155, -4.3, 0)
-        # Get the parameter as a ValueInput
-
-        #########################################################################################################################
-        #This width doesn't changes with the slider 
-        Width2 = design.userParameters.itemByName(Width)
-        
-
-
-        pointB = adsk.core.Point3D.create(Width2*2.3, -4.3, 0)
         # pointC = adsk.core.Point3D.create(165, 0, 0)
-        pointC = adsk.core.Point3D.create(Width2*2.5, 0, 0)
         pointD = adsk.core.Point3D.create(-25, 0, 0)
         origin=sketchPoints1.add(centerPoint)
         lineAB = lines1.addByTwoPoints(pointA, pointB)
         lineAD = lines1.addByTwoPoints(pointA, pointD)
-        lineBC = lines1.addByTwoPoints(pointB, pointC)
-
-
-        arc1 = sketch1.sketchCurves.sketchArcs.addFillet(lineAB, lineAB.endSketchPoint.geometry, lineBC, lineBC.startSketchPoint.geometry, 30)  # Last argument is the radius of arc
-        arc2 = sketch1.sketchCurves.sketchArcs.addFillet(lineAB, lineAB.endSketchPoint.geometry, lineAD, lineAD.startSketchPoint.geometry, 30)  # Last argument is the radius of arc
-
-
+        # lineBC = lines1.addByTwoPoints(pointB, pointC)
+        # arc1 = sketch1.sketchCurves.sketchArcs.addFillet(lineAB, lineAB.endSketchPoint.geometry, lineBC, lineBC.startSketchPoint.geometry, 30)  # Last argument is the radius of arc
+        # arc2 = sketch1.sketchCurves.sketchArcs.addFillet(lineAB, lineAB.endSketchPoint.geometry, lineAD, lineAD.startSketchPoint.geometry, 30)  # Last argument is the radius of arc
         prof = sketch2.profiles.item(0)
         # Added all lines to the Collection, So Sweep follows all those lines
         collection = adsk.core.ObjectCollection.create()
         collection.add(lineAD)
-        collection.add(arc2) 
+        # collection.add(arc2) 
         collection.add(lineAB)
-        collection.add(arc1) 
-        collection.add(lineBC)
+        # collection.add(arc1) 
+        # collection.add(lineBC)
 
         path = features.createPath(collection)
         # Create a sweep input
