@@ -22,31 +22,31 @@ def trialAndError():
     global W, w, H, h
     min_lhs = a   # Minimum value for moment of inertia satisfying the value of 'a' so that side members can susutain bending load
     max_lhs = 7000000
-    min_w = 60
-    max_w = 200
+    min_W = 60
+    max_W = 200
     min_t = 4
     max_t = 20
 
     # Start with middle values
-    w = (min_w + max_w) / 2
+    W = (min_W + max_W) / 2
     t = (min_t + max_t) / 2
-    lhs = ((w * pow(1.5*w, 3))/12) - (((w-2*t)*pow((1.5*w-2*t), 3))/12)
+    lhs = ((W * pow(1.5*W, 3))/12) - (((W-2*t)*pow((1.5*W-2*t), 3))/12)
 
     while lhs <= min_lhs or lhs >= max_lhs:
         if lhs <= min_lhs:
             # If lhs is too small, increase w and t
-            w += 1
+            W += 1
             t += 0.1
         else:
             # If lhs is too large, decrease w and t
-            w -= 1
+            W -= 1
             t -= 0.1
-        lhs = ((w * pow(1.5*w, 3))/12) - (((w-2*t)*pow((1.5*w-2*t), 3))/12)
+        lhs = ((W * pow(1.5*W, 3))/12) - (((W-2*t)*pow((1.5*W-2*t), 3))/12)
 
-    print(f"w = {w:.2f}, t = {t:.2f}")
-    H = round(1.5*w)
+    print(f"W = {W:.2f}, t = {t:.2f}")
+    H = round(1.5*W)
     h = round(H-2*t)
-    W = round(w)
+    W = round(W)
     w = round(W-2*t)
 
     
@@ -77,8 +77,8 @@ Height_of_the_cross_member = 3*x
 
 Width_of_the_cross_member = Height_of_the_cross_member/1.5
 print("Dimensions of cross members")
-print("Width of outer rectangle of cross member = ",Width_of_the_cross_member, "mm")
-print("Width of inner rectangle of cross member = ",Width_of_the_cross_member-10, "mm")
-print("Height of outer cross member = ", Height_of_the_cross_member, "mm")
-print("Height of inner cross member = ", Height_of_the_cross_member-10, "mm")
-print("length of cross member = ", Front_Track-2*W, "mm")
+print("Width of outer rectangle of cross member = ",round(Width_of_the_cross_member), "mm")
+print("Width of inner rectangle of cross member = ",round(Width_of_the_cross_member-10), "mm")
+print("Height of outer cross member = ", round(Height_of_the_cross_member), "mm")
+print("Height of inner cross member = ", round(Height_of_the_cross_member-10), "mm")
+print("length of cross member = ", round(Front_Track-2*W), "mm")
