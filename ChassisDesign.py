@@ -72,7 +72,7 @@ Torsional_Force = Force_on_each_side_member*Length
 theta = Torsional_Force/Torsional_Stiffness
 
 tan_theta = math.tan(theta*3.141592/180)
-print(tan_theta)
+# print(tan_theta)
 x = tan_theta*Length  # Where x is half of the height of cross member
 Height_of_the_cross_member = 3*x
 

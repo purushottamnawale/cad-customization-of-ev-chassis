@@ -1,5 +1,5 @@
-# Author- 
-# Description- 
+# Author- Purushottam Nawale
+# Description- CAD Customization of an EV Chassis
 
 import adsk.core
 import adsk.fusion
@@ -24,67 +24,67 @@ def run(context):
 
 
 
-        # User Parameters
-        width='Width'
-        widthValue='131.4 cm'
-        # newInputName=ui.inputBox("Enter a new User Parameter Name: ", "New User Parameter",Width)
-        newInputNumber=ui.inputBox("Enter width of chassis: ","User Parameter Width",widthValue)
-        # realInputNumber=unitsMgr.evaluateExpression(widthValue,unitsMgr.defaultLengthUnits)
-        Width=unitsMgr.evaluateExpression(newInputNumber[0],unitsMgr.defaultLengthUnits)
-        realValueInput1=adsk.core.ValueInput.createByReal(Width)
-        # value=design.userParameters.add(newInputName[0],realValueInput,unitsMgr.defaultLengthUnits,'')
-        value1=design.userParameters.add(width,realValueInput1,unitsMgr.defaultLengthUnits,'')
+        # # User Parameters
+        # width='Width'
+        # widthValue='134.8 cm'
+        # # newInputName=ui.inputBox("Enter a new User Parameter Name: ", "New User Parameter",Width)
+        # newInputNumber=ui.inputBox("Enter width of chassis: ","User Parameter Width",widthValue)
+        # # realInputNumber=unitsMgr.evaluateExpression(widthValue,unitsMgr.defaultLengthUnits)
+        # Width=unitsMgr.evaluateExpression(newInputNumber[0],unitsMgr.defaultLengthUnits)
+        # realValueInput1=adsk.core.ValueInput.createByReal(Width)
+        # # value=design.userParameters.add(newInputName[0],realValueInput,unitsMgr.defaultLengthUnits,'')
+        # value1=design.userParameters.add(width,realValueInput1,unitsMgr.defaultLengthUnits,'')
 
-        Wheelbase='Wheelbase'
-        wheebaseValue='245 cm'
-        newInputNumber2=ui.inputBox("Enter wheelbase of chassis: ","User Parameter Wheelbase",wheebaseValue)
-        WheelBase=unitsMgr.evaluateExpression(newInputNumber2[0],unitsMgr.defaultLengthUnits)
-        realValueInput2=adsk.core.ValueInput.createByReal(WheelBase)
-        value2=design.userParameters.add(Wheelbase,realValueInput2,unitsMgr.defaultLengthUnits,'')
+        # Wheelbase='Wheelbase'
+        # wheebaseValue='245 cm'
+        # newInputNumber2=ui.inputBox("Enter wheelbase of chassis: ","User Parameter Wheelbase",wheebaseValue)
+        # WheelBase=unitsMgr.evaluateExpression(newInputNumber2[0],unitsMgr.defaultLengthUnits)
+        # realValueInput2=adsk.core.ValueInput.createByReal(WheelBase)
+        # value2=design.userParameters.add(Wheelbase,realValueInput2,unitsMgr.defaultLengthUnits,'')
 
-        CSWidth = 'csWidth'
-        csWidthValue='8.6 cm'
-        newInputNumber3=ui.inputBox("Enter Width of Rectangular Cross Section: ","User Parameter Width",csWidthValue)
-        csWidth=unitsMgr.evaluateExpression(newInputNumber3[0],unitsMgr.defaultLengthUnits)
-        realValueInput3 = adsk.core.ValueInput.createByReal(csWidth)
-        value3=design.userParameters.add(CSWidth, realValueInput3,unitsMgr.defaultLengthUnits, '')
+        # CSWidth = 'csWidth'
+        # csWidthValue='8.6 cm'
+        # newInputNumber3=ui.inputBox("Enter Width of Rectangular Cross Section: ","User Parameter Width",csWidthValue)
+        # csWidth=unitsMgr.evaluateExpression(newInputNumber3[0],unitsMgr.defaultLengthUnits)
+        # realValueInput3 = adsk.core.ValueInput.createByReal(csWidth)
+        # value3=design.userParameters.add(CSWidth, realValueInput3,unitsMgr.defaultLengthUnits, '')
 
-        CSHeight = 'csHeight'
-        csHeightValue='12.9 cm'
-        newInputNumber4=ui.inputBox("Enter Height of Rectangular Cross Section: ","User Parameter csHeight",csHeightValue)
-        csHeight=unitsMgr.evaluateExpression(newInputNumber4[0],unitsMgr.defaultLengthUnits)
-        realValueInput4 = adsk.core.ValueInput.createByReal(csHeight)
-        value4=design.userParameters.add(CSHeight, realValueInput4,unitsMgr.defaultLengthUnits, '')
+        # CSHeight = 'csHeight'
+        # csHeightValue='12.9 cm'
+        # newInputNumber4=ui.inputBox("Enter Height of Rectangular Cross Section: ","User Parameter csHeight",csHeightValue)
+        # csHeight=unitsMgr.evaluateExpression(newInputNumber4[0],unitsMgr.defaultLengthUnits)
+        # realValueInput4 = adsk.core.ValueInput.createByReal(csHeight)
+        # value4=design.userParameters.add(CSHeight, realValueInput4,unitsMgr.defaultLengthUnits, '')
 
-        thickness = 'Thickness'
-        csHeightValue='0.76 cm'
-        newInputNumber5=ui.inputBox("Enter the Thickness: ","User Parameter Thickness",csHeightValue)
-        Thickness=unitsMgr.evaluateExpression(newInputNumber5[0],unitsMgr.defaultLengthUnits)
-        realValueInput5 = adsk.core.ValueInput.createByReal(Thickness)
-        value5=design.userParameters.add(thickness, realValueInput5,unitsMgr.defaultLengthUnits, '')
+        # thickness = 'Thickness'
+        # csHeightValue='0.76 cm'
+        # newInputNumber5=ui.inputBox("Enter the Thickness: ","User Parameter Thickness",csHeightValue)
+        # Thickness=unitsMgr.evaluateExpression(newInputNumber5[0],unitsMgr.defaultLengthUnits)
+        # realValueInput5 = adsk.core.ValueInput.createByReal(Thickness)
+        # value5=design.userParameters.add(thickness, realValueInput5,unitsMgr.defaultLengthUnits, '')
 
 
-        ICSWidth = 'icsWidth'
-        icsWidthValue='5.5 cm'
-        newInputNumber6=ui.inputBox("Enter Width of Rectangular Cross Section: ","User Parameter Width",icsWidthValue)
-        icsWidth=unitsMgr.evaluateExpression(newInputNumber6[0],unitsMgr.defaultLengthUnits)
-        realValueInput6 = adsk.core.ValueInput.createByReal(icsWidth)
-        value6=design.userParameters.add(ICSWidth, realValueInput6,unitsMgr.defaultLengthUnits, '')
+        # ICSWidth = 'icsWidth'
+        # icsWidthValue='5.5 cm'
+        # newInputNumber6=ui.inputBox("Enter Width of Rectangular Cross Section: ","User Parameter Width",icsWidthValue)
+        # icsWidth=unitsMgr.evaluateExpression(newInputNumber6[0],unitsMgr.defaultLengthUnits)
+        # realValueInput6 = adsk.core.ValueInput.createByReal(icsWidth)
+        # value6=design.userParameters.add(ICSWidth, realValueInput6,unitsMgr.defaultLengthUnits, '')
 
-        ICSHeight = 'icsHeight'
-        icsHeightValue= '8.2 cm'
-        newInputNumber7=ui.inputBox("Enter Height of Rectangular Cross Section: ","User Parameter csHeight",icsHeightValue)
-        icsHeight=unitsMgr.evaluateExpression(newInputNumber7[0],unitsMgr.defaultLengthUnits)
-        realValueInput7 = adsk.core.ValueInput.createByReal(icsHeight)
-        value7=design.userParameters.add(ICSHeight, realValueInput7,unitsMgr.defaultLengthUnits, '')
+        # ICSHeight = 'icsHeight'
+        # icsHeightValue= '8.2 cm'
+        # newInputNumber7=ui.inputBox("Enter Height of Rectangular Cross Section: ","User Parameter csHeight",icsHeightValue)
+        # icsHeight=unitsMgr.evaluateExpression(newInputNumber7[0],unitsMgr.defaultLengthUnits)
+        # realValueInput7 = adsk.core.ValueInput.createByReal(icsHeight)
+        # value7=design.userParameters.add(ICSHeight, realValueInput7,unitsMgr.defaultLengthUnits, '')
 
-        # Width=131.4
-        # WheelBase=245
-        # csWidth=8.6
-        # csHeight=12.9
-        # Thickness=0.76
-        # icsWidth=5.5
-        # icsHeight=8.2
+        Width=131.4
+        WheelBase=245
+        csWidth=8.6
+        csHeight=12.9
+        Thickness=0.76
+        icsWidth=5.5
+        icsHeight=8.2
 
     
         w=csWidth-2*Thickness
@@ -172,8 +172,8 @@ def run(context):
         # Create a Plane for a Mirror
         planeInput = planes.createInput()
         # offsetDistance = adsk.core.ValueInput.createByString('65.7 cm') #131.4/2=65.7
-        offsetDistance = adsk.core.ValueInput.createByString(width)
-        # offsetDistance = adsk.core.ValueInput.createByReal(Width/2)
+        # offsetDistance = adsk.core.ValueInput.createByString(width)
+        offsetDistance = adsk.core.ValueInput.createByReal(Width/2)
         planeInput.setByOffset(face1, offsetDistance)
         plane = planes.add(planeInput)
         plane.isLightBulbOn=False
@@ -263,18 +263,19 @@ def run(context):
         rectangle2 = rectangles22.addCenterPointRectangle(centerPoint, cornerPoint2)
 
 
-        prof1 = sketch21.profiles.item(0)
-        prof3 = sketch22.profiles.item(0)
-        prof4 = sketch22.profiles.item(3)
-        prof7 = sketch22.profiles.item(4)
-        prof8 = sketch22.profiles.item(7)
+        prof1 = sketch21.profiles.item(1)
+        prof2 = sketch22.profiles.item(1)
+        prof3 = sketch22.profiles.item(2)
+        prof4 = sketch22.profiles.item(5)
+        prof5 = sketch22.profiles.item(6)
+
 
         collection2 = adsk.core.ObjectCollection.create()
         collection2.add(prof1)
+        collection2.add(prof2)
         collection2.add(prof3)
         collection2.add(prof4)
-        collection2.add(prof7)
-        collection2.add(prof8)
+        collection2.add(prof5)
 
         # Create an extrusion that goes from the profile to a specified entity.
         extrudeInput = extrudes.createInput(collection2, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
