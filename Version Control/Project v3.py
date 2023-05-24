@@ -26,7 +26,7 @@ def run(context):
 
         # # User Parameters
         # width='Width'
-        # widthValue='134.8 cm'
+        # widthValue='152.0 cm'
         # # newInputName=ui.inputBox("Enter a new User Parameter Name: ", "New User Parameter",Width)
         # newInputNumber=ui.inputBox("Enter width of chassis: ","User Parameter Width",widthValue)
         # # realInputNumber=unitsMgr.evaluateExpression(widthValue,unitsMgr.defaultLengthUnits)
@@ -78,7 +78,7 @@ def run(context):
         # realValueInput7 = adsk.core.ValueInput.createByReal(icsHeight)
         # value7=design.userParameters.add(ICSHeight, realValueInput7,unitsMgr.defaultLengthUnits, '')
 
-        Width=131.4
+        Width=152.0
         WheelBase=245
         csWidth=8.6
         csHeight=12.9
@@ -86,7 +86,8 @@ def run(context):
         icsWidth=5.5
         icsHeight=8.2
 
-    
+        Width=Width-2*csWidth
+
         w=csWidth-2*Thickness
         h=csHeight-2*Thickness
 
@@ -393,6 +394,8 @@ def run(context):
         # prevent this module from being terminate when the script returns, because we are waiting for event handlers to fire
         adsk.autoTerminate(False)
 
+
+
     except:
         if ui:
             ui.messageBox('Failed:\n{}'.format(traceback.format_exc()))
@@ -597,3 +600,4 @@ def getMaterialsFromLib(libName, filterExp):
         return filteredList
     else:
         return materialList
+

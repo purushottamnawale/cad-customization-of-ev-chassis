@@ -85,19 +85,50 @@ def command_created(args: adsk.core.CommandCreatedEventArgs):
     # TODO Define the dialog for your command by adding different inputs to the command.
 
     # Create a simple text box input.
-    inputs.addTextBoxCommandInput('text_box', 'Material : ', 'Enter material name', 1, False)
+    # inputs.addTextBoxCommandInput('text_box', 'Material : ', 'Enter material name', 1, False)
 
     # Create a value input field and set the default using 1 unit of the default length unit.
     defaultLengthUnits = app.activeProduct.unitsManager.defaultLengthUnits
     default_value = adsk.core.ValueInput.createByString('3')
     defaultLengthUnits=''
-    inputs.addValueInput('value_input', 'Enter Number of Cross Members : ', defaultLengthUnits, default_value)
+    # inputs.addValueInput('value_input', 'Enter Number of Cross Members : ', defaultLengthUnits, default_value)
+
+    # # Create a simple text box input.
+    # inputs.addTextBoxCommandInput('text_box', 'Some Text', 'Enter some text.', 1, False)
+
+    # # Create a value input field and set the default using 1 unit of the default length unit.
+    # defaultLengthUnits = app.activeProduct.unitsManager.defaultLengthUnits
+    # default_value = adsk.core.ValueInput.createByString('1')
+    # inputs.addValueInput('value_input', 'Some Value', defaultLengthUnits, default_value)
+
+
+    # app = adsk.core.Application.get()
+    # ui = app.userInterface
+    # doc = app.documents.add(adsk.core.DocumentTypes.FusionDesignDocumentType)
+    # design = adsk.fusion.Design.cast(app.activeProduct)
+    # unitsMgr = design.unitsManager
+
+    # # User Parameters
+    # width='Width'
+    # widthValue='131.4 cm'
+    # # newInputName=ui.inputBox("Enter a new User Parameter Name: ", "New User Parameter",Width)
+    # newInputNumber=ui.inputBox("Enter width of chassis: ","User Parameter Width",widthValue)
+    # # realInputNumber=unitsMgr.evaluateExpression(widthValue,unitsMgr.defaultLengthUnits)
+    # Width=unitsMgr.evaluateExpression(newInputNumber[0],unitsMgr.defaultLengthUnits)
+    # realValueInput1=adsk.core.ValueInput.createByReal(Width)
+    # # value=design.userParameters.add(newInputName[0],realValueInput,unitsMgr.defaultLengthUnits,'')
+    # value1=design.userParameters.add(width,realValueInput1,unitsMgr.defaultLengthUnits,'')
 
     # Create Input Slider
     inputs.addFloatSliderCommandInput('float_slider_length','Wheelbase','mm',100,500,False)
+    # inputs.addValueInput('value_input_width','Width','cm',adsk.core.ValueInput.createByReal(70))
+    # width_input = inputs.addValueInput('width', 'Width', 'cm', adsk.core.ValueInput.createByReal(100))
+
     inputs.addFloatSliderCommandInput('int_slider_width','Width','mm',50,300,False)
     inputs.addFloatSliderCommandInput('int_slider_thickness','Thickness of cross-section','mm',0.1,2,False)
-    inputs.addFloatSliderCommandInput('int_slider_length','Height of Outer rectangle','mm',5,20,False)
+    # inputs.addFloatSliderCommandInput('int_slider_thickness','Width of rectangular cross-section','mm',0.1,2,False)
+    # inputs.addFloatSliderCommandInput('int_slider_thickness','Height of rectangular cross-section','mm',0.1,2,False)
+    # inputs.addFloatSliderCommandInput('int_slider_length','Height of Outer rectangle','mm',5,20,False)
 
     # TODO Connect to the events that are needed by this command.
     futil.add_handler(args.command.execute, command_execute, local_handlers=local_handlers)
@@ -139,6 +170,7 @@ def command_preview(args: adsk.core.CommandEventArgs):
 
     widthParamNew:adsk.core.IntegerSliderCommandInput=inputs.itemById('int_slider_width')
     userParams.itemByName('Width').expression=widthParamNew.expressionOne
+    widthcast = adsk.core.ValueCommandInput.cast(None)
 
 
 # This event handler is called when the user changes anything in the command dialog

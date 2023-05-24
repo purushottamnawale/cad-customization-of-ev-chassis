@@ -39,7 +39,7 @@ def run(context):
         # unitsMgr=design.unitsManager
         # realInputNumber=unitsMgr.evaluateExpression(newInputNumber[0],unitsMgr.defaultLengthUnits)
         # realValueInput=adsk.core.ValueInput.createByReal(realInputNumber)
-        # design.userParameters.add(newInputName[0],realValueInput,unitsMgr.defaultLengthUnits,'')
+        # value=design.userParameters.add(newInputName[0],realValueInput,unitsMgr.defaultLengthUnits,'')
 
 
         # pointS1 = adsk.core.Point3D.create(39.05936, 0, 20)
@@ -67,6 +67,7 @@ def run(context):
         pointL = adsk.core.Point3D.create(76.55936, 0, -385.7608)
         pointM = adsk.core.Point3D.create(1.55936, 0, -20.7608)
         pointN = adsk.core.Point3D.create(76.55936, 0, -20.7608)
+        # pointN = adsk.core.Point3D.create(realInputNumber*2, 0, -20.7608)
 
         pointO = adsk.core.Point3D.create(76.55936, 0, -20.7608)
         pointP = adsk.core.Point3D.create(76.55936, 0, -20.7608)
